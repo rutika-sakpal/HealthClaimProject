@@ -1,0 +1,20 @@
+{
+  "Routes": [
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Login/login-user",
+      "DownstreamScheme": "https",
+      "ServiceName": "memberService",
+      "UpstreamPathTemplate": "/api/gateway/healthclaim/login",
+      "UpstreamHttpMethod": [ "Post" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    // "BaseUrl": "http://localhost:44363"
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": "8500",
+      "Type": "Consul"
+    }
+  }
+}

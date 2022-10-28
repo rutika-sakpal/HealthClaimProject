@@ -17,11 +17,12 @@ namespace Member.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        HealthclaimAppContext db = new HealthclaimAppContext();
+        HealthclaimAppContext db;
         private IConfiguration _config;
-        public LoginController(IConfiguration config)
+        public LoginController(IConfiguration config, HealthclaimAppContext _db)
         {
             _config = config;
+            db = _db;
         }
 
         [HttpPost]

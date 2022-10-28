@@ -12,5 +12,6 @@ export const Mainroutes = [
     { path: 'newuser', component: RegistrationComponent },
     { path: 'login/newuser',component:RegistrationComponent },
     { path: 'user/search',component: MemberComponent},
+    { path: 'user/search/add',component: AddmemberComponent},
     
 ];
