@@ -1,5 +1,6 @@
 using Common;
 using Member.Models;
+using Member.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -50,6 +51,8 @@ namespace Member
             services.AddDbContext<HealthclaimAppContext>(x => x.UseSqlServer(Configuration.GetConnectionString("HealthClaimDbConnection")));
 
             services.AddConsulConfig(Configuration);
+            services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<IMemberService, MemberService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
