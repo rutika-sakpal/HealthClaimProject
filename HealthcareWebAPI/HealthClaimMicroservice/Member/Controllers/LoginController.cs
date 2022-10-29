@@ -1,4 +1,5 @@
 ﻿using Member.Models;
+using Member.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -19,81 +20,52 @@ namespace Member.Controllers
     {
         HealthclaimAppContext db;
         private IConfiguration _config;
-        public LoginController(IConfiguration config, HealthclaimAppContext _db)
+        ILoginService loginService;
+
+        public LoginController(ILoginService _loginService)
         {
-            _config = config;
-            db = _db;
+              loginService = _loginService;
         }
 
         [HttpPost]
         [Route("login-user")]
-        public IActionResult Login(TblLogin login)
+        public async Task<IActionResult> Login(TblLogin user)
         {
-            IActionResult response = Unauthorized();
-            var user = AuthenticateUser(login, false);
-            if (user != null)
+            try
             {
-                var tokenString = GenerateToken(user);
-                response = Ok(new { token = tokenString, role = user.UserRole });
-            }
-            return response;
-        }
-
-        private TblLogin AuthenticateUser(TblLogin login, bool IsRegister)
-        {
-            if (IsRegister)
-            {
-                db.TblLogins.Add(login);
-                db.SaveChanges();
-                return login;
-            }
-            else
-            {
-                if (db.TblLogins.Any(x => x.UserName == login.UserName && x.Password == login.Password))
+                IActionResult response = Unauthorized();
+                var userdata = await loginService.Login(user, false);
+                if (user != null)
                 {
-                    return db.TblLogins.Where(x => x.UserName == login.UserName && x.Password == login.Password).FirstOrDefault();
+                    response = Ok(new { token = userdata });
                 }
-                else
-                {
-                    return null;
-                }
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return Ok(ex);
             }
 
         }
-
-        private string GenerateToken(TblLogin login)
-        {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
-
-            var token = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, login.UserName),
-                    new Claim(ClaimTypes.Role, login.UserRole),
-                    new Claim(ClaimTypes.NameIdentifier, Convert.ToString( login.Id))
-                }),
-                Expires = DateTime.Now.AddMinutes(120),
-                SigningCredentials = credentials
-            };
-            var TokenHandler = new JwtSecurityTokenHandler();
-            var tokenGenerated = TokenHandler.CreateToken(token);
-            return TokenHandler.WriteToken(tokenGenerated).ToString();
-        }
-
         [HttpPost]
         [Route("register-user")]
-        public IActionResult Register(TblLogin login)
+        public async Task<IActionResult> Register([FromBody] TblLogin user)
         {
-            IActionResult response = Unauthorized();
-            var user = AuthenticateUser(login, true);
-            if (user != null)
+            try
             {
-                var tokenString = GenerateToken(user);
-                response = Ok(new { token = tokenString });
+                IActionResult response = Unauthorized();
+                var userdata = await loginService.Register(user, true);
+                if (user != null)
+                {
+                    response = Ok(new { token = userdata });
+                }
+                return response;
             }
-            return response;
+            catch (Exception ex)
+            {
+                return Ok(ex);
+            }
+
         }
 
     }

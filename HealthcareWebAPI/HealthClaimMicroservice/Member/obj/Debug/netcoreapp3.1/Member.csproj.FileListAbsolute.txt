@@ -76,6 +76,7 @@ D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\n
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Member.runtimeconfig.dev.json
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Member.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Member.pdb
+D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Consul.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Humanizer.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
@@ -110,6 +111,7 @@ D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\n
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
@@ -123,6 +125,9 @@ D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\n
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Common.dll
+D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Common.pdb
+D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.csproj.AssemblyReference.cache
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.GeneratedMSBuildEditorConfig.editorconfig
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.AssemblyInfoInputs.cache
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.AssemblyInfo.cs
@@ -133,11 +138,7 @@ D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\n
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\staticwebassets\Member.StaticWebAssets.xml
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\scopedcss\bundle\Member.styles.css
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.RazorTargetAssemblyInfo.cache
+D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.csproj.CopyComplete
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.pdb
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.genruntimeconfig.cache
-D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.csproj.AssemblyReference.cache
-D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Consul.dll
-D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
-D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Common.dll
-D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\bin\Debug\netcoreapp3.1\Common.pdb

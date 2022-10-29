@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Member.Services
 {
-    public class LoginService:ILoginService
+    public class LoginService : ILoginService
     {
         HealthclaimAppContext db;
         private IConfiguration _config;
@@ -21,72 +21,93 @@ namespace Member.Services
             _config = config;
             db = _db;
         }
-        //public IActionResult Login(TblLogin login)
-        //{
-        //    IActionResult response = Unauthorized();
-        //    var user = AuthenticateUser(login, false);
-        //    if (user != null)
-        //    {
-        //        var tokenString = GenerateToken(user);
-        //        response = Ok(new { token = tokenString, role = user.UserRole });
-        //    }
-        //    return response;
-        //}
+        public async Task<string> Login(TblLogin user, bool Isregister)
+        {
+            try
+            {
+                var userdata = AuthenticateUser(user, Isregister);
+                if (user != null)
+                {
+                    var tokenString = GenerateToken(userdata);
+                    return tokenString;
+                }
+                else
+                {
+                    return "Invalid data";
+                }
+            }
+            catch (Exception ex)
+            {
+                return "Something went wrong";
+            }
 
-        //private TblLogin AuthenticateUser(TblLogin login, bool IsRegister)
-        //{
-        //    if (IsRegister)
-        //    {
-        //        db.TblLogins.Add(login);
-        //        db.SaveChanges();
-        //        return login;
-        //    }
-        //    else
-        //    {
-        //        if (db.TblLogins.Any(x => x.UserName == login.UserName && x.Password == login.Password))
-        //        {
-        //            return db.TblLogins.Where(x => x.UserName == login.UserName && x.Password == login.Password).FirstOrDefault();
-        //        }
-        //        else
-        //        {
-        //            return null;
-        //        }
-        //    }
+        }
 
-        //}
+        private TblLogin AuthenticateUser(TblLogin login, bool IsRegister)
+        {
+            if (IsRegister)
+            {
+                db.TblLogins.Add(login);
+                db.SaveChanges();
+                return login;
+            }
+            else
+            {
+                if (db.TblLogins.Any(x => x.UserName == login.UserName && x.Password == login.Password))
+                {
+                    return db.TblLogins.Where(x => x.UserName == login.UserName && x.Password == login.Password).FirstOrDefault();
+                }
+                else
+                {
+                    return null;
+                }
+            }
 
-        //private string GenerateToken(TblLogin login)
-        //{
-        //    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwt:Key"]));
-        //    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
+        }
 
-        //    var token = new SecurityTokenDescriptor
-        //    {
-        //        Subject = new ClaimsIdentity(new Claim[]
-        //        {
-        //            new Claim(ClaimTypes.Name, login.UserName),
-        //            new Claim(ClaimTypes.Role, login.UserRole),
-        //            new Claim(ClaimTypes.NameIdentifier, Convert.ToString( login.Id))
-        //        }),
-        //        Expires = DateTime.Now.AddMinutes(120),
-        //        SigningCredentials = credentials
-        //    };
-        //    var TokenHandler = new JwtSecurityTokenHandler();
-        //    var tokenGenerated = TokenHandler.CreateToken(token);
-        //    return TokenHandler.WriteToken(tokenGenerated).ToString();
-        //}
+        private string GenerateToken(TblLogin login)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwt:Key"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
-      
-        //public IActionResult Register(TblLogin login)
-        //{
-        //    IActionResult response = Unauthorized();
-        //    var user = AuthenticateUser(login, true);
-        //    if (user != null)
-        //    {
-        //        var tokenString = GenerateToken(user);
-        //        response = Ok(new { token = tokenString });
-        //    }
-        //    return response;
-        //}
+            var token = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, login.UserName),
+                    new Claim(ClaimTypes.Role, login.UserRole),
+                    new Claim(ClaimTypes.NameIdentifier, Convert.ToString( login.Id))
+                }),
+                Expires = DateTime.Now.AddMinutes(120),
+                SigningCredentials = credentials
+            };
+            var TokenHandler = new JwtSecurityTokenHandler();
+            var tokenGenerated = TokenHandler.CreateToken(token);
+            return TokenHandler.WriteToken(tokenGenerated).ToString();
+        }
+
+
+        public async Task<string> Register(TblLogin user, bool Isregister)
+        {
+            try
+            {
+                var userdata = AuthenticateUser(user, Isregister);
+                if (user != null)
+                {
+                    var tokenString = GenerateToken(userdata);
+                    return tokenString;
+
+
+                }
+                else
+                {
+                    return "Invalid data";
+                }
+            }
+            catch (Exception ex)
+            {
+                return "Something went wrong";
+            }
+        }
     }
 }

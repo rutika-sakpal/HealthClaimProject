@@ -156,7 +156,7 @@ D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Gateway\obj\Debug\
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Gateway\obj\Debug\netcoreapp3.1\Gateway.RazorTargetAssemblyInfo.cache
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Gateway\obj\Debug\netcoreapp3.1\Gateway.RazorTargetAssemblyInfo.cs
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Gateway\obj\Debug\netcoreapp3.1\Gateway.Views.pdb
+D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Gateway\obj\Debug\netcoreapp3.1\Gateway.csproj.CopyComplete
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Gateway\obj\Debug\netcoreapp3.1\Gateway.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Gateway\obj\Debug\netcoreapp3.1\Gateway.pdb
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Gateway\obj\Debug\netcoreapp3.1\Gateway.genruntimeconfig.cache
-D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Gateway\obj\Debug\netcoreapp3.1\Gateway.csproj.CopyComplete

@@ -8,39 +8,59 @@
   
                 <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">User Registration</p>
   
-                <form class="mx-1 mx-md-4">
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="email" id="form3Example3c" class="form-control" [(ngModel)]="UserDataModel.userName"
-                        [ngModelOptions]="{standalone: true}" />
-                      <label class="form-label" for="form3Example3c">Your Email</label>
+                <form [formGroup]="RegisterDataModel.formUserGroup" class="mx-1 mx-md-4">
+                  <div class="form-outline mb-3">
+                    <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"> <i style="width: 80px;">User Name</i> </span>
+                      </div>
+                      <input type="email" id="form3Example3"   formControlName="UsernameControl"  class="form-control form-control-lg"
+                        placeholder="Enter a username"   [(ngModel)]="RegisterDataModel.userName"/>
+                            </div>
+                            <span class="validspan" *ngIf="!RegisterDataModel.formUserGroup.controls['UsernameControl'].valid && 
+                            RegisterDataModel.formUserGroup.controls['UsernameControl']?.touched" style="color: red;"> Please enter a valid email.</span>                               
+                    
+                              </div>
+  
+                  <div class="form-outline mb-3">
+                 
+                    <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"> <i style="width: 80px;">Password</i> </span>
                     </div>
+                      <input type="password" id="form3Example4c" formControlName="UserPasswordControl"  class="form-control" 
+                      [(ngModel)]="RegisterDataModel.password"/>
+                    </div>
+                    <span class="validspan" *ngIf="!RegisterDataModel.formUserGroup.controls['UserPasswordControl'].valid && 
+                    RegisterDataModel.formUserGroup.controls['UserPasswordControl']?.touched" style="color: red;"> Please enter a valid password.</span>
+          
                   </div>
   
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="form3Example4c" class="form-control" [(ngModel)]="UserDataModel.password"
-                        [ngModelOptions]="{standalone: true}" />
-                      <label class="form-label" for="form3Example4c">Password</label>
-                    </div>
-                  </div>
-  
-                  <div class="d-flex flex-row align-items-center mb-4">
+                 <!--  <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
                       <input type="password" id="form3Example4cd" class="form-control" />
                       <label class="form-label" for="form3Example4cd">Confirm password</label>
                     </div>
-                  </div>
-  
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <label for="role">Select Role: </label>
-                    <select name="role" [(ngModel)]="UserDataModel.roleCategory" #role="ngModel">
+                  </div> -->
+                  <div class="form-outline mb-3">
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i style="width: 80px;">Role</i> </span>
+                    </div>
+                    <select class="form-select"  placeholder="Select Role" formControlName="RoleControl"  [(ngModel)]="RegisterDataModel.roleCategory" aria-label="Default select example">
                       <option *ngFor="let p of roles" [value]="p.roleName">{{p.roleName}}</option>
                     </select>
-                  </div>
+                </div>
+                <span class="validspan" *ngIf="!RegisterDataModel.formUserGroup.controls['RoleControl'].valid && 
+                RegisterDataModel.formUserGroup.controls['RoleControl']?.touched" style="color: red;"> Please select role.</span>
+      
+                  </div> 
+               
+                    <!-- <select name="role" [(ngModel)]="RegisterDataModel.roleCategory" #role="ngModel">
+                      <option *ngFor="let p of roles" [value]="p.roleName">{{p.roleName}}</option>
+                    </select> -->
+                
                  
               <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                 <button type="button" class="btn btn-primary btn-lg" (click)="registerUser()">Register</button>
