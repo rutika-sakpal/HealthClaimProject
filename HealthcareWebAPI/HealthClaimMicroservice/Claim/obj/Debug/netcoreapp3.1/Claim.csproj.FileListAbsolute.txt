@@ -132,7 +132,6 @@ D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Claim\obj\Debug\ne
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Claim\obj\Debug\netcoreapp3.1\staticwebassets\Claim.StaticWebAssets.xml
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Claim\obj\Debug\netcoreapp3.1\scopedcss\bundle\Claim.styles.css
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Claim\obj\Debug\netcoreapp3.1\Claim.RazorTargetAssemblyInfo.cache
-D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Claim\obj\Debug\netcoreapp3.1\Claim.csproj.CopyComplete
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Claim\obj\Debug\netcoreapp3.1\Claim.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Claim\obj\Debug\netcoreapp3.1\Claim.pdb
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Claim\obj\Debug\netcoreapp3.1\Claim.genruntimeconfig.cache

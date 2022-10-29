@@ -8,7 +8,7 @@
             </div>
 
             <div class="col-lg-6 col-xl-6 col-md-1 col-sm-1">
-
+            <form>
                 <div class="card bg-light">
                     <h4 class="card-title mt-3 text-center">Add New Member</h4>
                     <article class="card-body mx-auto" style="max-width: 400px;">
@@ -16,53 +16,54 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">First Name</i> </span>
                             </div>
-                            <input class="form-control" placeholder="Enter First Name" type="text">
-                        </div> <!-- form-group end.// -->
+                            <input class="form-control"  [ngModelOptions]="{standalone: true}"  [(ngModel)]="MemberDataModel.firstName" placeholder="Enter First Name" type="text">
+                        </div> 
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">Last Name</i> </span>
                             </div>
-                            <input class="form-control" placeholder="Enter Last Name" type="text">
-                        </div> <!-- form-group end.// -->
+                            <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="MemberDataModel.lastName" placeholder="Enter Last Name" type="text">
+                        </div> 
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">DOB</i> </span>
                             </div>
-                            <input class="form-control" placeholder="Enter Date Of Birth" type="date">
-                        </div> <!-- form-group end.// -->
+                            <input class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="MemberDataModel.dateOfBirth" placeholder="Enter Date Of Birth" type="date">
+                        </div>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">Address</i> </span>
                             </div>
-                            <input class="form-control" placeholder="Enter Address" type="text-area">
+                            <input class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="MemberDataModel.address" placeholder="Enter Address" type="text-area">
                             <br>
                             <br>
-                        </div> <!-- form-group end.// -->
+                        </div> 
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">State</i> </span>
                             </div>
-                            <select class="form-select" placeholder="Select State" aria-label="Default select example">
+                            <select class="form-select" [ngModelOptions]="{standalone: true}"  [(ngModel)]="MemberDataModel.state" placeholder="Select State" aria-label="Default select example">
                                 <option selected>Select State</option>
-                                <option value="1">Maharashtra</option>
+                                <option value="Maharashtra">Maharashtra</option>
 
 
                             </select>
-                        </div> <!-- form-group end.// -->
+                        </div> 
 
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">Email</i> </span>
                             </div>
-                            <input class="form-control" placeholder="Enter Email" type="text">
-                        </div> <!-- form-group end.// -->
+                            <input class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="MemberDataModel.email" placeholder="Enter Email" type="text">
+                        </div> 
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block"> Add Member
+                            <button type="submit" class="btn btn-primary btn-block" (click) ="AddMember($event)" > Add Member
                             </button>
-                        </div> <!-- form-group// -->
+                        </div> 
                     </article>
                 </div>
+            </form>
             </div>
         </div>
     </div>

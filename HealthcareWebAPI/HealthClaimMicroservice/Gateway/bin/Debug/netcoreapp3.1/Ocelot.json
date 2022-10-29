@@ -15,6 +15,14 @@
       "ServiceName": "memberService",
       "UpstreamPathTemplate": "/api/gateway/healthclaim/register",
       "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Member/add-member",
+      "DownstreamScheme": "https",
+      "ServiceName": "memberService",
+      "UpstreamPathTemplate": "/api/gateway/healthclaim/addmember",
+      "UpstreamHttpMethod": [ "Post" ]
     }
   ],
   "GlobalConfiguration": {
