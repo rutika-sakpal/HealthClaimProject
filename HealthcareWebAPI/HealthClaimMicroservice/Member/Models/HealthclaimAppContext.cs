@@ -17,6 +17,8 @@ namespace Member.Models
         {
         }
 
+        public virtual DbSet<TblClaim> TblClaims { get; set; }
+        public virtual DbSet<TblClaimType> TblClaimTypes { get; set; }
         public virtual DbSet<TblLogin> TblLogins { get; set; }
         public virtual DbSet<TblMember> TblMembers { get; set; }
         public virtual DbSet<TblPhysician> TblPhysicians { get; set; }
@@ -34,6 +36,46 @@ namespace Member.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
+            modelBuilder.Entity<TblClaim>(entity =>
+            {
+                entity.HasKey(e => e.ClaimId);
+
+                entity.ToTable("tblClaim");
+
+                entity.Property(e => e.ClaimAmount).HasColumnType("decimal(18, 0)");
+
+                entity.Property(e => e.ClaimDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ClaimRemark).HasMaxLength(100);
+
+                entity.Property(e => e.CreatedBy).HasMaxLength(50);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ModifiedBy).HasMaxLength(50);
+
+                entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.ClaimType)
+                    .WithMany(p => p.TblClaims)
+                    .HasForeignKey(d => d.ClaimTypeId)
+                    .HasConstraintName("FK_tblClaim_tblClaimType");
+
+                entity.HasOne(d => d.Member)
+                    .WithMany(p => p.TblClaims)
+                    .HasForeignKey(d => d.MemberId)
+                    .HasConstraintName("FK_tblClaim_tblMember1");
+            });
+
+            modelBuilder.Entity<TblClaimType>(entity =>
+            {
+                entity.HasKey(e => e.ClaimTypeId);
+
+                entity.ToTable("tblClaimType");
+
+                entity.Property(e => e.ClaimTypeValue).HasMaxLength(50);
+            });
+
             modelBuilder.Entity<TblLogin>(entity =>
             {
                 entity.ToTable("tblLogin");
@@ -47,7 +89,7 @@ namespace Member.Models
 
             modelBuilder.Entity<TblMember>(entity =>
             {
-                entity.HasKey(e => e.MenberId)
+                entity.HasKey(e => e.MemberId)
                     .HasName("PK_tblLogin");
 
                 entity.ToTable("tblMember");
@@ -71,15 +113,18 @@ namespace Member.Models
                 entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.State).HasMaxLength(50);
+
+                entity.HasOne(d => d.Physician)
+                    .WithMany(p => p.TblMembers)
+                    .HasForeignKey(d => d.PhysicianId)
+                    .HasConstraintName("FK_tblMember_tblPhysician");
             });
 
             modelBuilder.Entity<TblPhysician>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.PhysicianId);
 
                 entity.ToTable("tblPhysician");
-
-                entity.Property(e => e.PhysicianId).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.PhysicianName).HasMaxLength(50);
 

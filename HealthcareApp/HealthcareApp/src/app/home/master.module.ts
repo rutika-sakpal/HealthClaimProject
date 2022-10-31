@@ -11,6 +11,7 @@ import { HomeComponent } from './home.component';
 import { RegistrationComponent } from '../registration/registration.component';
 import { LoginServiceService } from '../services/login-service.service';
 import { AddmemberComponent } from '../addmember/addmember.component';
+import { MemberComponent } from '../member/member.component';
 
 
 
@@ -20,7 +21,8 @@ import { AddmemberComponent } from '../addmember/addmember.component';
     MasterComponent,
     LoginComponent,
     RegistrationComponent,
-    AddmemberComponent
+    AddmemberComponent,
+    MemberComponent
   ],
   imports: [
     BrowserModule,

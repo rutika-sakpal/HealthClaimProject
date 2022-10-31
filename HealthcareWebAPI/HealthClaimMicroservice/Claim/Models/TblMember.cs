@@ -7,7 +7,13 @@ namespace Claim.Models
 {
     public partial class TblMember
     {
-        public int MenberId { get; set; }
+        public TblMember()
+        {
+            TblClaims = new HashSet<TblClaim>();
+        }
+
+        public int MemberId { get; set; }
+        public int? PhysicianId { get; set; }
         public int? UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -19,5 +25,8 @@ namespace Claim.Models
         public DateTime? CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
+
+        public virtual TblPhysician Physician { get; set; }
+        public virtual ICollection<TblClaim> TblClaims { get; set; }
     }
 }

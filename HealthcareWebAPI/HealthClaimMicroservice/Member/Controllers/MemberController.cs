@@ -3,6 +3,7 @@ using Member.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,10 +21,21 @@ namespace Member.Controllers
         }
 
         [HttpGet]
-        public string Get()
+        [Route("GetAllMember")]
+        public IEnumerable GetAllMember()
         {
-            return "Hi";
+
+            var memberList = memberService.GetAllMember();
+            return memberList;
         }
+        [HttpGet]
+        [Route("GetAllPhysician")]
+        public IEnumerable<TblPhysician> GetAllPhysician()
+        {
+            var physicianList = memberService.GetAllPhysician();
+            return physicianList;
+        }
+
 
         [HttpPost]
         [Route("add-member")]
@@ -42,5 +54,33 @@ namespace Member.Controllers
             }
 
         }
+        [HttpPost]
+        [Route("SearchMember")]
+        public IActionResult SearchMember([FromBody]SearchDataModel searchDataModel)
+        {
+            try
+            {
+                dynamic data = null;
+                if (searchDataModel != null)
+                {
+                    data =  memberService.SearchMember(searchDataModel);
+                }
+
+                if (data == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(data);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
     }
 }

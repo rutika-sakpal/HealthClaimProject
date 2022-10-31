@@ -16,29 +16,32 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">Member Id</i> </span>
                             </div>
-                            <input class="form-control" placeholder="Enter Member Id" type="text">
+                            <input class="form-control" [(ngModel)]="SearchDataModel.memberId" placeholder="Enter Member Id" type="text">
                            
                         </div> 
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">First Name</i> </span>
                             </div>
-                            <input class="form-control" placeholder="Enter First Name" type="text">
+                            <input class="form-control" [(ngModel)]="SearchDataModel.firstName" placeholder="Enter First Name" type="text">
                         </div> 
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">Last Name</i> </span>
                             </div>
-                            <input class="form-control" placeholder="Enter Last Name" type="text">
+                            <input class="form-control" [(ngModel)]="SearchDataModel.lastName" placeholder="Enter Last Name" type="text">
                         </div> 
                     
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">Physician</i> </span>
                             </div>
-                            <select class="form-select" placeholder="Select State" aria-label="Default select example">
+                            <select class="form-select" [(ngModel)]="SearchDataModel.physicianId" placeholder="Select State" aria-label="Default select example">
                                 <option selected>Physician Name</option>
-                                <option value="1">Maharashtra</option>
+                                <option *ngFor="let phy of PhysicianList"  
+                                        value={{phy.physicianId}}>  
+                                    {{phy.physicianName}}  
+                                </option> 
 
 
                             </select>
@@ -48,14 +51,14 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">Claim Id</i> </span>
                             </div>
-                            <input class="form-control" placeholder="Enter ClaimID" type="text">
+                            <input class="form-control" [(ngModel)]="SearchDataModel.claimId" placeholder="Enter ClaimID" type="text">
                         </div> 
 
                         <div class="form-group text-center">
                            
-                            <button type="submit" class="btn btn-primary"> Clear
+                            <button type="submit" class="btn btn-primary" (click)="clearSearch()"> Clear
                             </button> &nbsp;
-                            <button type="submit" class="btn btn-primary"> Search
+                            <button type="submit" class="btn btn-primary" (click)="SearchMember()"> Search
                             </button>
                             
                         </div> 
@@ -76,8 +79,6 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                       
-                            <td>Member Id</td>
                             <td>First Name</td>
                             <td>Last Name</td>
                             <td>Assigned Physician</td>
@@ -85,14 +86,20 @@
                             <td>Claim Amount</td>
                             <td>Submitted Date</td>
                             <td>Select Member</td>
-                      
                     </tr>
                 </thead>
-                <tbody>
-                        <tr>
+               
+                        <tr *ngFor = "let member of MemberDetailList">
+                            <td>{{member.firstName}}</td>
+                            <td>{{member.lastName}}</td>
+                            <td>{{member.physicianName}}</td>
+                            <td>{{member.claimId}}</td>
+                            <td>{{member.claimAmount}}</td>
+                            <td>{{member.claimDate}}</td>
+                            <td> <input type="checkbox" name="myData" ></td>
                          </tr>
                         
-                </tbody>
+               
             </table>
         </div>
     </div>
