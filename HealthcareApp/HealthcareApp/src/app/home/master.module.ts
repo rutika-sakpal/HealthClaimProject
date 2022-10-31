@@ -12,6 +12,9 @@ import { RegistrationComponent } from '../registration/registration.component';
 import { LoginServiceService } from '../services/login-service.service';
 import { AddmemberComponent } from '../addmember/addmember.component';
 import { MemberComponent } from '../member/member.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { ClaimComponent } from '../claim/claim.component';
+
 
 
 
@@ -22,7 +25,8 @@ import { MemberComponent } from '../member/member.component';
     LoginComponent,
     RegistrationComponent,
     AddmemberComponent,
-    MemberComponent
+    MemberComponent,
+    ClaimComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,7 @@ import { MemberComponent } from '../member/member.component';
     HttpClientModule,
     RouterModule.forRoot(Mainroutes)
   ],
-  providers: [LoginServiceService],
+  providers: [LoginServiceService,{provide:JWT_OPTIONS,useValue:JWT_OPTIONS},JwtHelperService],
   bootstrap: [MasterComponent]
 })
 export class MasterModule { }

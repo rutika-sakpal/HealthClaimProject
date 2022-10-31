@@ -96,7 +96,7 @@
                             <td>{{member.claimId}}</td>
                             <td>{{member.claimAmount}}</td>
                             <td>{{member.claimDate}}</td>
-                            <td> <input type="checkbox" name="myData" ></td>
+                            <td><a (click)="SubmitClaim(member.memberId)"   class="btn btn-primary" >Submit claim</a></td> 
                          </tr>
                         
                

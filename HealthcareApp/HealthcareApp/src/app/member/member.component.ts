@@ -4,6 +4,8 @@ import { MemberData } from '../models/memberdata';
 import { PhysicianData } from '../models/physiciandata';
 import { SearchData } from '../models/searchdata';
 import { MemberService } from '../services/member.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { LoginServiceService } from '../services/login-service.service';
 
 @Component({
   
@@ -11,15 +13,23 @@ import { MemberService } from '../services/member.service';
   styleUrls: ['./member.component.css']
 })
 export class MemberComponent implements OnInit{
+
   title = 'HealthcareApp';
   MemberDetailList:Array<MemberData>=new Array<MemberData>();
   PhysicianList:Array<PhysicianData>=new Array<PhysicianData>();
   SearchDataModel: SearchData = new SearchData();
-  
-  constructor(private _router:Router,private _service:MemberService) { }
+  public name ='';
+  public routeId='';
+  constructor(private _router:Router,private _auth:LoginServiceService,private _service:MemberService ,private jwt:JwtHelperService) { }
   ngOnInit():void
   {
-    this.GetAllPhysician();
+    
+    this.name=this.jwt.decodeToken(this._auth.getToken()?.toString()).unique_name;
+    console.log(this.jwt.decodeToken(this._auth.getToken()?.toString()));
+    console.log(this.name);
+    this.routeId =this.jwt.decodeToken(this._auth.getToken()?.toString()).nameid
+
+      this.GetAllPhysician();
       this.GetAllMember();
   }
   btnClickAddMember() {
@@ -59,5 +69,9 @@ export class MemberComponent implements OnInit{
   {
     debugger;
     this.MemberDetailList=response;
+  }
+  SubmitClaim(input:any)
+  {
+    this._router.navigate(["user/search/submitclaim",input]);
   }
 }

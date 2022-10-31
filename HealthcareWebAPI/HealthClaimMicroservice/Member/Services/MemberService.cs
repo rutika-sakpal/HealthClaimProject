@@ -43,17 +43,20 @@ namespace Member.Services
             {
                 var memberList = (from m in db.TblMembers
                                   join py in db.TblPhysicians on m.PhysicianId equals py.PhysicianId
-                                  //join c in db.TblClaims on m.MenberId equals c.MemberId into claims
+                                  //join c in db.TblClaims on m.MemberId equals c.MemberId into claims
                                   //from x in claims.DefaultIfEmpty()
-                                  //join c in db.TblClaims on m.MenberId equals c.MemberId
+
 
                                   select new
                                   {
+                                      memberId = m.MemberId,
                                       firstName = m.FirstName,
                                       lastName = m.LastName,
                                       physicianName = py.PhysicianName,
-                                      //claimId = x.ClaimId==0 ?0: x.ClaimId
-
+                                      //claimAmount = x == null ? 0 : x.ClaimAmount,
+                                      //claimId = x ==null ? 0: x.ClaimId,
+                                      //claimDate = x == null ? DateTime.MinValue: x.ClaimDate
+                                       
                                   }).ToList();
                 return memberList;
             }
