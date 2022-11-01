@@ -80,7 +80,21 @@ namespace Member.Models
             {
                 entity.ToTable("tblLogin");
 
+                entity.Property(e => e.Address).HasMaxLength(50);
+
+                entity.Property(e => e.City).HasMaxLength(50);
+
+                entity.Property(e => e.DateOfBirth).HasColumnType("date");
+
+                entity.Property(e => e.Email).HasMaxLength(50);
+
+                entity.Property(e => e.FirstName).HasMaxLength(30);
+
+                entity.Property(e => e.LastName).HasMaxLength(30);
+
                 entity.Property(e => e.Password).HasMaxLength(50);
+
+                entity.Property(e => e.State).HasMaxLength(50);
 
                 entity.Property(e => e.UserName).HasMaxLength(50);
 
@@ -95,6 +109,8 @@ namespace Member.Models
                 entity.ToTable("tblMember");
 
                 entity.Property(e => e.Address).HasMaxLength(50);
+
+                entity.Property(e => e.City).HasMaxLength(50);
 
                 entity.Property(e => e.CreatedBy).HasMaxLength(50);
 

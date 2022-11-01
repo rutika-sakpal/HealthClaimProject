@@ -25,11 +25,11 @@ namespace Claim.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=CTSDOTNET845;Initial Catalog=HealthclaimApp;User ID=sa;Password=pass@word1");
-            }
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//                optionsBuilder.UseSqlServer("Data Source=CTSDOTNET845;Initial Catalog=HealthclaimApp;User ID=sa;Password=pass@word1");
+//            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -80,7 +80,21 @@ namespace Claim.Models
             {
                 entity.ToTable("tblLogin");
 
+                entity.Property(e => e.Address).HasMaxLength(50);
+
+                entity.Property(e => e.City).HasMaxLength(50);
+
+                entity.Property(e => e.DateOfBirth).HasColumnType("date");
+
+                entity.Property(e => e.Email).HasMaxLength(50);
+
+                entity.Property(e => e.FirstName).HasMaxLength(30);
+
+                entity.Property(e => e.LastName).HasMaxLength(30);
+
                 entity.Property(e => e.Password).HasMaxLength(50);
+
+                entity.Property(e => e.State).HasMaxLength(50);
 
                 entity.Property(e => e.UserName).HasMaxLength(50);
 
@@ -95,6 +109,8 @@ namespace Claim.Models
                 entity.ToTable("tblMember");
 
                 entity.Property(e => e.Address).HasMaxLength(50);
+
+                entity.Property(e => e.City).HasMaxLength(50);
 
                 entity.Property(e => e.CreatedBy).HasMaxLength(50);
 

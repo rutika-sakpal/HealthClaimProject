@@ -30,7 +30,14 @@ export class RegistrationComponent implements OnInit {
     var _registerData = {
       userName: this.RegisterDataModel.userName,
       password: this.RegisterDataModel.password,
-      userRole:this.RegisterDataModel.roleCategory
+      userRole:this.RegisterDataModel.roleCategory,
+      firstName: this.RegisterDataModel.firstName,
+      lastName:this.RegisterDataModel.lastName,
+      email: this.RegisterDataModel.email,
+      state: this.RegisterDataModel.state,
+      address: this.RegisterDataModel.address,
+      dateOfBirth: this.RegisterDataModel.dateOfBirth,
+      city: this.RegisterDataModel.city
     };
     this._service.registerUser(_registerData).subscribe(res=>{
       localStorage.setItem('token',res.token);

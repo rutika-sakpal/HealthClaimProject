@@ -46,7 +46,6 @@ namespace Member.Services
                                   //join c in db.TblClaims on m.MemberId equals c.MemberId into claims
                                   //from x in claims.DefaultIfEmpty()
 
-
                                   select new
                                   {
                                       memberId = m.MemberId,

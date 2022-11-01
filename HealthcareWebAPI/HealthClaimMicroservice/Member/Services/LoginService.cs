@@ -49,6 +49,28 @@ namespace Member.Services
             {
                 db.TblLogins.Add(login);
                 db.SaveChanges();
+                if(login.UserRole=="Member")
+                {
+                    TblMember member = new TblMember();
+                    Random rnd = new Random();
+
+                    member.FirstName = login.FirstName;
+                    member.LastName = login.LastName;
+                    member.Address = login.Address;
+                    member.City = login.City;
+                    member.Email = login.Email;
+                    member.DateOfBirth = login.DateOfBirth;
+                    member.State = login.State;
+                    member.PhysicianId = rnd.Next(1, 10);
+                    member.UserId = login.Id;
+                    member.CreatedBy = login.UserName;
+                    member.CreatedDate = DateTime.Now;
+                    member.ModifiedBy = login.UserName;
+                    member.ModifiedDate = DateTime.Now;
+
+                    db.TblMembers.Add(member);
+                    db.SaveChanges();
+                }
                 return login;
             }
             else
