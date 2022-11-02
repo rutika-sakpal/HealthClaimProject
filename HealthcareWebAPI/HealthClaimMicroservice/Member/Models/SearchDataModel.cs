@@ -7,7 +7,7 @@ namespace Member.Models
 {
     public class SearchDataModel
     {
-        public string MemberId { get; set; }
+        public int MemberId { get; set; }
         public int PhysicianId { get; set; }
         public int ClaimId { get; set; }
         public string FirstName { get; set; }

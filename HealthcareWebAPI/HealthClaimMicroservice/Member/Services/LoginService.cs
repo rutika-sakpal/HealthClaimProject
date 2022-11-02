@@ -43,7 +43,7 @@ namespace Member.Services
 
         }
 
-        private TblLogin AuthenticateUser(TblLogin login, bool IsRegister)
+        public TblLogin AuthenticateUser(TblLogin login, bool IsRegister)
         {
             if (IsRegister)
             {
@@ -87,7 +87,7 @@ namespace Member.Services
 
         }
 
-        private string GenerateToken(TblLogin login)
+        public string GenerateToken(TblLogin login)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);

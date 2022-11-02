@@ -89,16 +89,19 @@ namespace Member.Services
                 int PhysicianId = 0;
                 PhysicianId = Convert.ToInt32(searchDataModel?.PhysicianId);
                 dynamic getdata = (from m in db.TblMembers
-                                   join py in db.TblPhysicians
-                                   on m.PhysicianId equals py.PhysicianId
+                                   join py in db.TblPhysicians on m.PhysicianId equals py.PhysicianId
+                                   join c in db.TblClaims on m.MemberId equals c.MemberId into claims
+                                   from x in claims.DefaultIfEmpty()
                                    where ((m.PhysicianId == PhysicianId || m.FirstName == searchDataModel.FirstName || m.LastName == searchDataModel.LastName
-                                    || m.MemberId == Convert.ToInt32(searchDataModel.MemberId)))
+                                    || m.MemberId == Convert.ToInt32(searchDataModel.MemberId)  || x.ClaimId == Convert.ToInt32(searchDataModel.ClaimId)))
                                    select new
                                    {
                                        memberId = m.MemberId,
                                        firstName = m.FirstName,
                                        lastName = m.LastName,
-                                       physicianName = py.PhysicianName
+                                       physicianName = py.PhysicianName,
+                                       claimId = x == null ? 0 : x.ClaimId,
+                                       claimDate = x == null ? Convert.ToDateTime("9999-09-09") : x.ClaimDate
 
                                    }).ToList();
 

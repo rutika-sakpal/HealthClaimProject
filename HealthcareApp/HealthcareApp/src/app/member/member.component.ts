@@ -63,7 +63,14 @@ export class MemberComponent implements OnInit{
   }
   SearchMember()
   {
-    this._service.SearchMember(this.SearchDataModel).subscribe(res=>this.SearchMemberSuccess(res),res=>console.log(res)); 
+    var _userData = {
+      firstName: this.SearchDataModel.firstName,
+      memberId:  Number (this.SearchDataModel.memberId),
+      lastName:this.SearchDataModel.lastName,
+      claimId:Number(this.SearchDataModel.claimId),
+      physicianId:Number(this.SearchDataModel.physicianId)
+    };
+    this._service.SearchMember(_userData).subscribe(res=>this.SearchMemberSuccess(res),res=>console.log(res)); 
   }
   SearchMemberSuccess(response:any)
   {

@@ -29,15 +29,16 @@ namespace Member.Controllers
 
         [HttpPost]
         [Route("login-user")]
-        public async Task<IActionResult> Login(TblLogin user)
+        public IActionResult Login(TblLogin user)
         {
             try
             {
                 IActionResult response = Unauthorized();
-                var userdata = await loginService.Login(user, false);
+                var userdata =  loginService.AuthenticateUser(user, false);
                 if (user != null)
                 {
-                    response = Ok(new { token = userdata });
+                    var tokenString = loginService.GenerateToken(userdata);
+                    response = Ok(new { token = tokenString, role = userdata.UserRole });
                 }
                 return response;
             }
@@ -49,15 +50,16 @@ namespace Member.Controllers
         }
         [HttpPost]
         [Route("register-user")]
-        public async Task<IActionResult> Register([FromBody] TblLogin user)
+        public IActionResult Register([FromBody] TblLogin user)
         {
             try
             {
                 IActionResult response = Unauthorized();
-                var userdata = await loginService.Register(user, true);
+                var userdata = loginService.AuthenticateUser(user, true);
                 if (user != null)
                 {
-                    response = Ok(new { token = userdata });
+                    var tokenString = loginService.GenerateToken(userdata);
+                    response = Ok(new { token = tokenString, role = userdata.UserRole });
                 }
                 return response;
             }

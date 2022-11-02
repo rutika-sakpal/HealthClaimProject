@@ -41,7 +41,16 @@ export class RegistrationComponent implements OnInit {
     };
     this._service.registerUser(_registerData).subscribe(res=>{
       localStorage.setItem('token',res.token);
-     this._router.navigate(["user/search"]);
+   
+      debugger;
+      if(res.role=="Admin")
+      {
+        this._router.navigate(["user/search"]);
+      }
+      if(res.role=="Member")
+      {
+        this._router.navigate(["member/home"]);
+      }  
     },res=>console.log(res));
   }
 }

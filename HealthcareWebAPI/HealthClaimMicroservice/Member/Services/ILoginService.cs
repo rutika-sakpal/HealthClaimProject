@@ -10,5 +10,7 @@ namespace Member.Services
     {
         Task<string> Login(TblLogin login, bool Isregister);
         Task<string> Register(TblLogin user, bool Isregister);
+        TblLogin AuthenticateUser(TblLogin login, bool IsRegister);
+        string GenerateToken(TblLogin login);
     }
 }

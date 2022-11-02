@@ -22,10 +22,17 @@ export class LoginComponent implements OnInit {
       password: this.UserDataModel.password
     };
     this._service.loginUser(_userData).subscribe(res => {
-      debugger;
-      // console.log('Hi You are able to login');        
       localStorage.setItem('token', res.token);
-      this._router.navigate(["user/search"]);
+      debugger;
+      if(res.role=="Admin")
+      {
+        this._router.navigate(["user/search"]);
+      }
+      if(res.role=="Member")
+      {
+        this._router.navigate(["member/home"]);
+      }  
+      
     }, res => console.log(res));
  
   }
