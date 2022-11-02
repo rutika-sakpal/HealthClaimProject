@@ -37,39 +37,50 @@ namespace Member.Services
         }
 
 
-        public IEnumerable GetAllMember()
+        public IEnumerable<MemberSearchModel> GetAllMember()
         {
-            try
-            {
-                var memberList = (from m in db.TblMembers
-                                  join py in db.TblPhysicians on m.PhysicianId equals py.PhysicianId
-                                  //join c in db.TblClaims on m.MemberId equals c.MemberId into claims
-                                  //from x in claims.DefaultIfEmpty()
+            var memberList = (from m in db.TblMembers
+                              join py in db.TblPhysicians on m.PhysicianId equals py.PhysicianId
+                              join c in db.TblClaims on m.MemberId equals c.MemberId into claims
+                              from x in claims.DefaultIfEmpty()
 
-                                  select new
-                                  {
-                                      memberId = m.MemberId,
-                                      firstName = m.FirstName,
-                                      lastName = m.LastName,
-                                      physicianName = py.PhysicianName,
-                                      //claimAmount = x == null ? 0 : x.ClaimAmount,
-                                      //claimId = x ==null ? 0: x.ClaimId,
-                                      //claimDate = x == null ? DateTime.MinValue: x.ClaimDate
-                                       
-                                  }).ToList();
-                return memberList;
-            }
-            catch (Exception ex)
+                              select new
+                              {
+                                  memberId = m.MemberId,
+                                  firstName = m.FirstName,
+                                  lastName = m.LastName,
+                                  physicianName = py.PhysicianName,
+                                  claimAmount = x == null ? 0 : x.ClaimAmount,
+                                  claimId = x == null ? 0 : x.ClaimId,
+                                  claimDate = x == null ? Convert.ToDateTime("9999-09-09") : x.ClaimDate
+
+                              }).ToList();
+
+            MemberSearchModel memberSearchModel;
+            List<MemberSearchModel> memberSearchModels = new List<MemberSearchModel>();
+            foreach (var item in memberList)
             {
-                return (IEnumerable<TblMember>)ex;
+                memberSearchModel = new MemberSearchModel();
+
+                memberSearchModel.MemberId = item.memberId;
+                memberSearchModel.ClaimId = item.claimId;
+                memberSearchModel.FirstName = item.firstName;
+                memberSearchModel.LastName = item.lastName;
+                memberSearchModel.PhysicianName = item.physicianName;
+                memberSearchModel.ClaimAmount = item.claimAmount;
+                memberSearchModel.ClaimDate = item.claimDate;
+
+                memberSearchModels.Add(memberSearchModel);
             }
+
+            return memberSearchModels;
+
+
         }
         public IEnumerable<TblPhysician> GetAllPhysician()
         {
             var physicianList = db.TblPhysicians.ToList();
             return physicianList;
-
-
         }
         public IEnumerable SearchMember(SearchDataModel searchDataModel)
         {
@@ -98,6 +109,45 @@ namespace Member.Services
                 dynamic result = ex;
                 return result;
             }
+        }
+
+        public IEnumerable<MemberSearchModel> GetAllMemberById(int id)
+        {
+            var memberList = (from m in db.TblMembers
+                              join py in db.TblPhysicians on m.PhysicianId equals py.PhysicianId
+                              join c in db.TblClaims on m.MemberId equals c.MemberId into claims
+                              from x in claims.DefaultIfEmpty()
+
+                              select new
+                              {
+                                  memberId = m.MemberId,
+                                  firstName = m.FirstName,
+                                  lastName = m.LastName,
+                                  physicianName = py.PhysicianName,
+                                  claimAmount = x == null ? 0 : x.ClaimAmount,
+                                  claimId = x == null ? 0 : x.ClaimId,
+                                  claimDate = x == null ? Convert.ToDateTime("9999-09-09") : x.ClaimDate
+
+                              }).ToList();
+
+            MemberSearchModel memberSearchModel;
+            List<MemberSearchModel> memberSearchModels = new List<MemberSearchModel>();
+            foreach (var item in memberList)
+            {
+                memberSearchModel = new MemberSearchModel();
+
+                memberSearchModel.MemberId = item.memberId;
+                memberSearchModel.ClaimId = item.claimId;
+                memberSearchModel.FirstName = item.firstName;
+                memberSearchModel.LastName = item.lastName;
+                memberSearchModel.PhysicianName = item.physicianName;
+                memberSearchModel.ClaimAmount = item.claimAmount;
+                memberSearchModel.ClaimDate = item.claimDate;
+
+                memberSearchModels.Add(memberSearchModel);
+            }
+
+            return memberSearchModels;
         }
     }
 }

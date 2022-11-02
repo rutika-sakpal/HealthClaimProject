@@ -47,6 +47,14 @@
       "ServiceName": "memberService",
       "UpstreamPathTemplate": "/api/gateway/healthclaim/searchmember",
       "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Claim/GetAllClaimType",
+      "DownstreamScheme": "https",
+      "ServiceName": "claimService",
+      "UpstreamPathTemplate": "/api/gateway/healthclaim/getallclaimtype",
+      "UpstreamHttpMethod": [ "Get" ]
     }
   ],
   "GlobalConfiguration": {

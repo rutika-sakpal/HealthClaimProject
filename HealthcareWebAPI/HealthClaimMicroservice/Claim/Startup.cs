@@ -1,4 +1,5 @@
 using Claim.Models;
+using Claim.Services;
 using Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,7 +32,7 @@ namespace Claim
             services.AddControllers();
             services.AddSwaggerGen();
             services.AddDbContext<HealthclaimAppContext>(x => x.UseSqlServer(Configuration.GetConnectionString("HealthClaimDbConnection")));
-
+            services.AddScoped<IClaimService, ClaimService>();
             services.AddConsulConfig(Configuration);
         }
 

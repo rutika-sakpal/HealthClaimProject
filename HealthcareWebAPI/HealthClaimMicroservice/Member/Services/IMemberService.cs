@@ -10,7 +10,8 @@ namespace Member.Services
     public interface IMemberService
     {
         TblMember SaveMember(TblMember member);
-        IEnumerable GetAllMember();
+        IEnumerable<MemberSearchModel> GetAllMember();
+        IEnumerable<MemberSearchModel> GetAllMemberById(int id);
         IEnumerable<TblPhysician> GetAllPhysician();
         IEnumerable SearchMember(SearchDataModel searchDataModel);
     }

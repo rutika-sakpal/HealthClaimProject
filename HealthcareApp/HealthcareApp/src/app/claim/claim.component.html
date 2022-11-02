@@ -17,10 +17,10 @@
                             </div>
                             <select class="form-select"  placeholder="Select Type" aria-label="Default select example">
                                 <option selected>Claim Type</option>
-                                <!-- <option *ngFor="let phy of PhysicianList"  
-                                        value={{phy.physicianId}}>  
-                                    {{phy.physicianName}}  
-                                </option>  -->
+                                <option *ngFor="let clm of ClaimTypeList"  
+                                        value={{clm.claimTypeId}}>  
+                                    {{clm.claimTypeValue}}  
+                                </option> 
                             </select>
                         </div> 
                         <div class="form-group input-group">

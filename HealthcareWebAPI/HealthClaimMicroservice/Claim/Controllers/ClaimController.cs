@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Claim.Models;
+using Claim.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,10 +13,18 @@ namespace Claim.Controllers
     [ApiController]
     public class ClaimController : ControllerBase
     {
-        [HttpGet]
-        public string Get()
+        IClaimService claimService;
+        public ClaimController(IClaimService _claimService)
         {
-            return "This is Claim Controller.";
+            claimService = _claimService;
+        }
+
+        [HttpGet]
+        [Route("GetAllClaimType")]
+        public IEnumerable<TblClaimType> GetAllClaimType()
+        {
+            var claimTypeList = claimService.GetAllClaimType();
+            return claimTypeList;
         }
     }
 }

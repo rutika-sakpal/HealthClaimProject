@@ -22,10 +22,18 @@ namespace Member.Controllers
 
         [HttpGet]
         [Route("GetAllMember")]
-        public IEnumerable GetAllMember()
+        public IEnumerable<MemberSearchModel> GetAllMember()
         {
-
             var memberList = memberService.GetAllMember();
+            return memberList;
+        }
+
+
+        [HttpGet]
+        [Route("GetAllMemberById")]
+        public IEnumerable<MemberSearchModel> GetAllMemberById(int id)
+        {
+            var memberList = memberService.GetAllMemberById(id);
             return memberList;
         }
         [HttpGet]
