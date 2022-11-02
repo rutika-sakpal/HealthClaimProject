@@ -33,5 +33,8 @@ export class MemberhomeComponent implements OnInit {
     console.log(input);
     this.MemberData = input;
   }
-
+  SubmitClaim(input:any)
+  {
+    this._router.navigate(["member/home/submitclaim",input]);
+  }
 }

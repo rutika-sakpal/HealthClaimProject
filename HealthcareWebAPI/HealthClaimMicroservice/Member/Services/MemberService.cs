@@ -116,6 +116,7 @@ namespace Member.Services
 
         public IEnumerable<MemberSearchModel> GetAllMemberById(int id)
         {
+
             var memberList = (from m in db.TblMembers
                               join py in db.TblPhysicians on m.PhysicianId equals py.PhysicianId
                               join c in db.TblClaims on m.MemberId equals c.MemberId into claims

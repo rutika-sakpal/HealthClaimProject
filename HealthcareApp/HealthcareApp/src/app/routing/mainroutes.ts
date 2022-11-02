@@ -15,5 +15,6 @@ export const Mainroutes = [
     { path: 'user/search',component: MemberComponent},
     { path: 'user/search/add',component: AddmemberComponent},
     { path: 'user/search/submitclaim/:id',component: ClaimComponent},
+    { path: 'member/home/submitclaim/:id',component: ClaimComponent},
     { path: 'member/home',component: MemberhomeComponent},
 ];
