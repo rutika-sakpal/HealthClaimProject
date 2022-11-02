@@ -120,7 +120,7 @@ namespace Member.Services
                               join py in db.TblPhysicians on m.PhysicianId equals py.PhysicianId
                               join c in db.TblClaims on m.MemberId equals c.MemberId into claims
                               from x in claims.DefaultIfEmpty()
-
+                              where(m.UserId==id)
                               select new
                               {
                                   memberId = m.MemberId,

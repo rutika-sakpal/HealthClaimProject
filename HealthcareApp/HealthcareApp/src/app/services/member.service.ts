@@ -11,7 +11,7 @@ export class MemberService {
   _getAllMember="https://localhost:44363/api/gateway/healthclaim/getallmember";
   _getAllPhysician="https://localhost:44363/api/gateway/healthclaim/getallphysician";
   _searchMember="https://localhost:44363/api/gateway/healthclaim/searchmember";
-  _getAllMemberById="https://localhost:44363/api/gateway/healthclaim/getallmemberbyId?memberId=";
+  _getAllMemberById="https://localhost:44363/api/gateway/healthclaim/getallmemberbyId?id=";
 _getMemberDetailByMemberId="https://localhost:44363/api/gateway/healthclaim/getmemberdetailbymemberId?memberId=";
 
   constructor(private http:HttpClient, private _router:Router) { }
@@ -30,9 +30,9 @@ _getMemberDetailByMemberId="https://localhost:44363/api/gateway/healthclaim/getm
   SearchMember(searchmember:any){
     return this.http.post<any>(this._searchMember,searchmember);
   }
-  GetAllMemberById()
+  GetAllMemberById(input:any)
   {
-    return this.http.get(this._getAllMemberById);
+    return this.http.get(this._getAllMemberById+input);
   }
   GetMemberDetailByMemberId(input:any)
   {

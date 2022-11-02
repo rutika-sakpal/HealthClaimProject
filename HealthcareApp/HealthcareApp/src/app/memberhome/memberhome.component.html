@@ -1,1 +1,30 @@
-<p>memberhome works!</p>
+<div class="col-md-6">
+    <div *ngFor="let mdata of MemberData">
+        <h4>Member Details</h4>
+        <div>
+            <label><strong>Member Id:</strong></label>
+            {{mdata.memberId}}
+        </div>
+        <div>
+            <label><strong>First Name:</strong></label>{{mdata.firstName}}
+        </div>
+        <div>
+            <label><strong>Last Name:</strong></label>
+            {{mdata.lastName}}
+        </div>
+
+        <div>
+            <label><strong>Physician Name:</strong></label>
+            {{mdata.physicianName}}
+        </div>
+        <div>
+            <label><strong>Claim Id:</strong></label>
+            {{mdata.claimId}}
+        </div>
+        <div>
+
+            <!-- <button> <a (click)="SubmitClaim(mdata.memberId)" class="btn btn-primary">Submit claim</a>
+            </button> -->
+        </div>
+    </div>
+</div>

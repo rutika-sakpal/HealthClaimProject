@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { MemberData } from '../models/memberdata';
+import { LoginServiceService } from '../services/login-service.service';
+import { MemberService } from '../services/member.service';
 
 @Component({
   selector: 'app-memberhome',
@@ -6,10 +11,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./memberhome.component.css']
 })
 export class MemberhomeComponent implements OnInit {
+  public name = '';
+  public routeId = '';
+  constructor(private _router: Router, private _auth: LoginServiceService, private jwt: JwtHelperService,
+    private _memberService: MemberService) { }
 
-  constructor() { }
-
+  MemberData: Array<MemberData> = new Array<MemberData>();
   ngOnInit(): void {
+    debugger;
+    this.name = this.jwt.decodeToken(this._auth.getToken()?.toString()).unique_name;
+    console.log(this.jwt.decodeToken(this._auth.getToken()?.toString()));
+    console.log(this.name);
+    this.routeId = this.jwt.decodeToken(this._auth.getToken()?.toString()).nameid
+    this.GetAllMemberById(Number(this.routeId));
+  }
+  GetAllMemberById(input: any) {
+    this._memberService.GetAllMemberById(input).subscribe(res => this.PostSuccess(res), res => console.log(res));
+  }
+  PostSuccess(input: any) {
+    debugger;
+    console.log(input);
+    this.MemberData = input;
   }
 
 }
