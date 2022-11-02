@@ -92,12 +92,12 @@ namespace Member.Services
                                    join py in db.TblPhysicians
                                    on m.PhysicianId equals py.PhysicianId
                                    where ((m.PhysicianId == PhysicianId || m.FirstName == searchDataModel.FirstName || m.LastName == searchDataModel.LastName
-                                    || m.MemberId==Convert.ToInt32( searchDataModel.MemberId) ))
+                                    || m.MemberId == Convert.ToInt32(searchDataModel.MemberId)))
                                    select new
-                                   {   
-                                       memberId=m.MemberId,
-                                       firstName=m.FirstName,
-                                       lastName=m.LastName,
+                                   {
+                                       memberId = m.MemberId,
+                                       firstName = m.FirstName,
+                                       lastName = m.LastName,
                                        physicianName = py.PhysicianName
 
                                    }).ToList();
@@ -149,5 +149,11 @@ namespace Member.Services
 
             return memberSearchModels;
         }
+        public IEnumerable<TblMember> GetMemberDetailByMemberId(int memberId)
+        {
+            var memberDetails = db.TblMembers.Where(x =>  x.MemberId == Convert.ToInt32(memberId)).ToList();
+            return memberDetails;
+        }
+
     }
 }

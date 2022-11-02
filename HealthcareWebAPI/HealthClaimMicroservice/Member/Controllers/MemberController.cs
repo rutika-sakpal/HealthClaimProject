@@ -37,6 +37,14 @@ namespace Member.Controllers
             return memberList;
         }
         [HttpGet]
+        [Route("GetMemberDetailByMemberId")]
+        public IEnumerable<TblMember> GetMemberDetailByMemberId(int memberId)
+        {
+            var memberDetails = memberService.GetMemberDetailByMemberId(memberId);
+            return memberDetails;
+        }
+
+        [HttpGet]
         [Route("GetAllPhysician")]
         public IEnumerable<TblPhysician> GetAllPhysician()
         {

@@ -16,6 +16,7 @@ export class MemberComponent implements OnInit{
 
   title = 'HealthcareApp';
   MemberDetailList:Array<MemberData>=new Array<MemberData>();
+  MemberData:Array<MemberData>=new Array<MemberData>();
   PhysicianList:Array<PhysicianData>=new Array<PhysicianData>();
   SearchDataModel: SearchData = new SearchData();
   public name ='';
@@ -62,16 +63,23 @@ export class MemberComponent implements OnInit{
   }
   SearchMember()
   {
-    debugger;
     this._service.SearchMember(this.SearchDataModel).subscribe(res=>this.SearchMemberSuccess(res),res=>console.log(res)); 
   }
   SearchMemberSuccess(response:any)
   {
-    debugger;
     this.MemberDetailList=response;
   }
   SubmitClaim(input:any)
   {
     this._router.navigate(["user/search/submitclaim",input]);
+  }
+  GetMemberDetailByMemberId(input:any)
+  {
+    this._service.GetMemberDetailByMemberId(input).subscribe(res => this.PostSuccess(res), res => console.log(res));
+  }
+  PostSuccess(input: any) {
+    debugger;
+    console.log(input);
+    this.MemberData = input;
   }
 }

@@ -9,5 +9,6 @@ namespace Claim.Services
     public interface IClaimService
     {
         IEnumerable<TblClaimType> GetAllClaimType();
+        TblClaim SaveClaim(TblClaim claim);
     }
 }

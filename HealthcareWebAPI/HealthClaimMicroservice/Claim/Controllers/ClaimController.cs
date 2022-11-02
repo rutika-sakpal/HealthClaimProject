@@ -26,5 +26,23 @@ namespace Claim.Controllers
             var claimTypeList = claimService.GetAllClaimType();
             return claimTypeList;
         }
+
+        [HttpPost]
+        [Route("add-claim")]
+        public IActionResult SaveClaim([FromBody] TblClaim claim)
+        {
+            try
+            {
+                var data = claimService.SaveClaim(claim);
+                return Ok(data);
+
+            }
+            catch (Exception ex)
+            {
+                return Ok(ex);
+
+            }
+
+        }
     }
 }

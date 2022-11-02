@@ -8,10 +8,15 @@ import { Router } from '@angular/router';
 export class ClaimService {
 
   _getAllClaimType="https://localhost:44363/api/gateway/healthclaim/getallclaimtype";
+  _addClaim="https://localhost:44363/api/gateway/healthclaim/addclaim";
+
   constructor(private http:HttpClient, private _router:Router) { }
 
   GetAllClaimType()
   {
     return this.http.get(this._getAllClaimType);
+  }
+  AddClaim(claim:any){
+    return this.http.post<any>(this._addClaim,claim);
   }
 }

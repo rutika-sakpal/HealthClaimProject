@@ -20,5 +20,23 @@ namespace Claim.Services
             var claimTypeList = db.TblClaimTypes.ToList();
             return claimTypeList;
         }
+        public TblClaim SaveClaim(TblClaim claim)
+        {
+            try
+            {
+                claim.MemberId = Convert.ToInt32(claim.MemberId);
+                claim.CreatedBy = "admin";
+                claim.CreatedDate = DateTime.Now;
+                claim.ModifiedBy = "admin";
+                claim.ModifiedDate = DateTime.Now;
+                db.TblClaims.Add(claim);
+                db.SaveChanges();
+                return claim;
+            }
+            catch (Exception ex)
+            {
+                return claim;
+            }
+        }
     }
 }

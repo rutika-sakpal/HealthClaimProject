@@ -14,5 +14,7 @@ namespace Member.Services
         IEnumerable<MemberSearchModel> GetAllMemberById(int id);
         IEnumerable<TblPhysician> GetAllPhysician();
         IEnumerable SearchMember(SearchDataModel searchDataModel);
+
+        IEnumerable<TblMember> GetMemberDetailByMemberId(int memberId);
     }
 }

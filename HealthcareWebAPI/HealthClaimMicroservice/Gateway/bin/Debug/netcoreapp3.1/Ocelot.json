@@ -50,6 +50,30 @@
     },
     {
       "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Member/GetAllMemberById",
+      "DownstreamScheme": "https",
+      "ServiceName": "memberService",
+      "UpstreamPathTemplate": "/api/gateway/healthclaim/getallmemberbyId",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Member/GetMemberDetailByMemberId",
+      "DownstreamScheme": "https",
+      "ServiceName": "memberService",
+      "UpstreamPathTemplate": "/api/gateway/healthclaim/getmemberdetailbymemberId",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/Claim/add-claim",
+      "DownstreamScheme": "https",
+      "ServiceName": "claimService",
+      "UpstreamPathTemplate": "/api/gateway/healthclaim/addclaim",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "UseServiceDiscovery": true,
       "DownstreamPathTemplate": "/api/Claim/GetAllClaimType",
       "DownstreamScheme": "https",
       "ServiceName": "claimService",

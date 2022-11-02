@@ -141,4 +141,3 @@ D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\n
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.dll
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.pdb
 D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.genruntimeconfig.cache
-D:\HealthcareProject\HealthcareWebAPI\HealthClaimMicroservice\Member\obj\Debug\netcoreapp3.1\Member.csproj.CopyComplete
