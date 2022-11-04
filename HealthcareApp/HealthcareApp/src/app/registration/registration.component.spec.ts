@@ -1,4 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router, RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { LoginServiceService } from '../services/login-service.service';
 
 import { RegistrationComponent } from './registration.component';
 
@@ -7,13 +13,17 @@ describe('RegistrationComponent', () => {
   let fixture: ComponentFixture<RegistrationComponent>;
 
   beforeEach(async () => {
+    let _router:Router;
+    let _service:LoginServiceService;
     await TestBed.configureTestingModule({
-      declarations: [ RegistrationComponent ]
+      imports:[ HttpClientTestingModule,HttpClientModule,RouterModule,RouterTestingModule],
+      declarations: [ RegistrationComponent ],
+      providers: [{provide:JWT_OPTIONS,useValue:JWT_OPTIONS},JwtHelperService]
     })
     .compileComponents();
-  });
-
-  beforeEach(() => {
+    
+    _router=TestBed.inject(Router);
+    _service=TestBed.inject(LoginServiceService);
     fixture = TestBed.createComponent(RegistrationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,5 +31,12 @@ describe('RegistrationComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('register component register user', () => {
+    fixture = TestBed.createComponent(RegistrationComponent);
+    component = fixture.debugElement.componentInstance;
+    let result=component.registerUser();
+    console.log('register user',result);
+    expect(result).toEqual(undefined);
   });
 });
