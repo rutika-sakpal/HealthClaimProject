@@ -16,6 +16,7 @@ import { MemberService } from '../services/member.service';
 export class ClaimComponent implements OnInit {
 
   id: any; 
+  public memberId = 0;
   constructor(private http: HttpClient,private route: ActivatedRoute ,private _memberService:MemberService,private _service:ClaimService,private _auth:LoginServiceService) { }
   ClaimTypeList:Array<ClaimTypeData>=new Array<ClaimTypeData>();
   MemberData:Array<MemberData>=new Array<MemberData>();

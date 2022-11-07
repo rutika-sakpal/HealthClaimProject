@@ -11,7 +11,7 @@ export class MemberData{
     physicianName:string='';
     claimId:number=0;
     physicianId:number=0;
-    claimDate:Date=new Date();
+    claimDate:string ='';
     claimAmount:number=0;
 
     

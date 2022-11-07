@@ -157,6 +157,10 @@ namespace Member.Services
             var memberDetails = db.TblMembers.Where(x =>  x.MemberId == Convert.ToInt32(memberId)).ToList();
             return memberDetails;
         }
-
+        public int GetMemberId(int userId)
+        {
+            int memberId = db.TblMembers.SingleOrDefault(x => x.UserId == Convert.ToInt32(userId)).MemberId;
+            return memberId;
+        }
     }
 }

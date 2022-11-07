@@ -3,6 +3,6 @@ export class SearchData{
     firstName:string='';
     lastName:string='';
     physicianName:string='';
-    claimId:number=0;
+    claimId:string='';
     physicianId:number=0;
 }

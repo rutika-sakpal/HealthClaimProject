@@ -27,7 +27,13 @@ namespace Member.Controllers
             var memberList = memberService.GetAllMember();
             return memberList;
         }
-
+        [HttpGet]
+        [Route("GetMemberId")]
+        public int GetMemberId(int userId)
+        {
+            int memberId = memberService.GetMemberId(userId);
+            return memberId;
+        }
 
         [HttpGet]
         [Route("GetAllMemberById")]

@@ -13,6 +13,7 @@ import { MemberService } from '../services/member.service';
 export class MemberhomeComponent implements OnInit {
   public name = '';
   public routeId = '';
+  public memberId = 0;
   constructor(private _router: Router, private _auth: LoginServiceService, private jwt: JwtHelperService,
     private _memberService: MemberService) { }
 
@@ -24,6 +25,7 @@ export class MemberhomeComponent implements OnInit {
     console.log(this.name);
     this.routeId = this.jwt.decodeToken(this._auth.getToken()?.toString()).nameid
     this.GetAllMemberById(Number(this.routeId));
+    this.GetMemberId(Number(this.routeId));
   }
   GetAllMemberById(input: any) {
     this._memberService.GetAllMemberById(input).subscribe(res => this.PostSuccess(res), res => console.log(res));
@@ -36,5 +38,12 @@ export class MemberhomeComponent implements OnInit {
   SubmitClaim(input:any)
   {
     this._router.navigate(["member/home/submitclaim",input]);
+  }
+  GetMemberId(input: any)
+  {
+    this._memberService.GetMemberId(input).subscribe(res => this.Success(res), res => console.log(res));
+  }
+  Success(input: any) {
+   return this.memberId = input;
   }
 }

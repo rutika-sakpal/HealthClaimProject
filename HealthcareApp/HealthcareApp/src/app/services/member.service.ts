@@ -13,8 +13,11 @@ export class MemberService {
   _searchMember="https://localhost:44363/api/gateway/healthclaim/searchmember";
   _getAllMemberById="https://localhost:44363/api/gateway/healthclaim/getallmemberbyId?id=";
 _getMemberDetailByMemberId="https://localhost:44363/api/gateway/healthclaim/getmemberdetailbymemberId?memberId=";
+_getMemberId="https://localhost:44363/api/gateway/healthclaim/getmemberId?userId=";
 
   constructor(private http:HttpClient, private _router:Router) { }
+
+  public memberId:any;
 
   AddMember(member:any){
     return this.http.post<any>(this._addMember,member);
@@ -37,5 +40,9 @@ _getMemberDetailByMemberId="https://localhost:44363/api/gateway/healthclaim/getm
   GetMemberDetailByMemberId(input:any)
   {
     return this.http.get(this._getMemberDetailByMemberId+input);
+  }
+  GetMemberId(input:any)
+  {
+    return this.memberId= this.http.get(this._getMemberId+input);
   }
 }

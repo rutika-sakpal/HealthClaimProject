@@ -15,6 +15,8 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     let _router:Router;
     let _service:LoginServiceService;
+    let spy: any;
+    
     await TestBed.configureTestingModule({
       imports:[ HttpClientTestingModule,HttpClientModule,RouterModule,RouterTestingModule],
       declarations: [ LoginComponent ],

@@ -43,6 +43,7 @@ export class MemberComponent implements OnInit{
   MemberSuccess(response:any)
   {
     debugger;
+    console.log(response);
     this.MemberDetailList=response;
   }
   GetAllPhysician()
@@ -57,9 +58,10 @@ export class MemberComponent implements OnInit{
   clearSearch() {
     this.SearchDataModel.firstName = '';
     this.SearchDataModel.lastName = '';
-    this.SearchDataModel.claimId = 0;
+    this.SearchDataModel.claimId = '';
     this.SearchDataModel.memberId = '';
-    this.SearchDataModel.physicianName = '';
+    this.SearchDataModel.physicianId = 0;
+    this.GetAllMember();
   }
   SearchMember()
   {

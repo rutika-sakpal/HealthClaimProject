@@ -93,9 +93,9 @@
                             <td>{{member.firstName}}</td>
                             <td>{{member.lastName}}</td>
                             <td>{{member.physicianName}}</td>
-                            <td>{{member.claimId}}</td>
-                            <td>{{member.claimAmount}}</td>
-                            <td>{{member.claimDate}}</td>
+                            <td>{{member.claimId==0?" ":member.claimId}}</td>
+                            <td>{{member.claimAmount==0?" ":member.claimAmount}}</td>
+                            <td>{{member.claimDate=="9999-09-09T00:00:00" ? " ": member.claimDate| date: 'MM/dd/yyyy'}}</td>
                             <td><a (click)="SubmitClaim(member.memberId)"   class="btn btn-primary" >Submit claim</a></td> 
                          </tr>
                         
