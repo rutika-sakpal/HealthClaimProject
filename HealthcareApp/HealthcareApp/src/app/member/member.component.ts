@@ -77,6 +77,7 @@ export class MemberComponent implements OnInit{
   SearchMemberSuccess(response:any)
   {
     this.MemberDetailList=response;
+    console.log=response;
   }
   SubmitClaim(input:any)
   {

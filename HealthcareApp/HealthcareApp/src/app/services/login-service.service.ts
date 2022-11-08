@@ -9,6 +9,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class LoginServiceService {
   _loginUrl="https://localhost:44363/api/gateway/healthclaim/login";
   _registerUrl = "https://localhost:44363/api/gateway/healthclaim/register";
+  // _loginUrl="https://member20221107185752.azurewebsites.net/api/Login/login-user";
+  // _registerUrl ="https://member20221107185752.azurewebsites.net/api/Login/register-user";
 
   constructor(private http:HttpClient, private _router:Router,private jwt: JwtHelperService) { }
   public role ='';

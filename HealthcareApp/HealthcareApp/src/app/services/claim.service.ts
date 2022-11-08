@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 export class ClaimService {
 
   _getAllClaimType="https://localhost:44363/api/gateway/healthclaim/getallclaimtype";
-  _addClaim="https://localhost:44363/api/gateway/healthclaim/addclaim";
+ _addClaim="https://localhost:44363/api/gateway/healthclaim/addclaim";
+  // _getAllClaimType="https://claim20221107202012.azurewebsites.net/api/Claim/GetAllClaimType";
+  // _addClaim="https://claim20221107202012.azurewebsites.net/api/Claim/add-claim";
 
   constructor(private http:HttpClient, private _router:Router) { }
 

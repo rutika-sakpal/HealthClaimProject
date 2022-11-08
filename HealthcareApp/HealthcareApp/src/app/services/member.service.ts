@@ -7,11 +7,19 @@ import { Router } from '@angular/router';
 })
 export class MemberService {
 
-  _addMember="https://localhost:44363/api/gateway/healthclaim/addmember";
-  _getAllMember="https://localhost:44363/api/gateway/healthclaim/getallmember";
-  _getAllPhysician="https://localhost:44363/api/gateway/healthclaim/getallphysician";
-  _searchMember="https://localhost:44363/api/gateway/healthclaim/searchmember";
-  _getAllMemberById="https://localhost:44363/api/gateway/healthclaim/getallmemberbyId?id=";
+//   _addMember="https://member20221107185752.azurewebsites.net/api/Member/add-member";
+//   _getAllMember="https://member20221107185752.azurewebsites.net/api/Member/GetAllMember";
+//   _getAllPhysician="https://member20221107185752.azurewebsites.net/api/Member/GetAllPhysician";
+//   _searchMember="https://member20221107185752.azurewebsites.net/api/Member/SearchMember";
+//   _getAllMemberById="https://member20221107185752.azurewebsites.net/api/Member/GetAllMemberById?id=";
+// _getMemberDetailByMemberId="https://member20221107185752.azurewebsites.net/api/Member/GetMemberDetailByMemberId?memberId=";
+// _getMemberId="https://member20221107185752.azurewebsites.net/api/Member/GetMemberId?userId=";
+
+_addMember="https://localhost:44363/api/gateway/healthclaim/addmember";
+_getAllMember="https://localhost:44363/api/gateway/healthclaim/getallmember";
+_getAllPhysician="https://localhost:44363/api/gateway/healthclaim/getallphysician";
+_searchMember="https://localhost:44363/api/gateway/healthclaim/searchmember";
+_getAllMemberById="https://localhost:44363/api/gateway/healthclaim/getallmemberbyId?id=";
 _getMemberDetailByMemberId="https://localhost:44363/api/gateway/healthclaim/getmemberdetailbymemberId?memberId=";
 _getMemberId="https://localhost:44363/api/gateway/healthclaim/getmemberId?userId=";
 

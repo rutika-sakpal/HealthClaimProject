@@ -10,11 +10,11 @@ import { Mainroutes } from '../routing/mainroutes';
 import { HomeComponent } from './home.component';
 import { RegistrationComponent } from '../registration/registration.component';
 import { LoginServiceService } from '../services/login-service.service';
-import { AddmemberComponent } from '../addmember/addmember.component';
 import { MemberComponent } from '../member/member.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ClaimComponent } from '../claim/claim.component';
 import { MemberhomeComponent } from '../memberhome/memberhome.component';
+import { AddmemberComponent } from '../addmember/addmember.component';
 
 
 
@@ -25,7 +25,7 @@ import { MemberhomeComponent } from '../memberhome/memberhome.component';
     MasterComponent,
     LoginComponent,
     RegistrationComponent,
-    AddmemberComponent,
+    
     MemberComponent,
     ClaimComponent,
     MemberhomeComponent

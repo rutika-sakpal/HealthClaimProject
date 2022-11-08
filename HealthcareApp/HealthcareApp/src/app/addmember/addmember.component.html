@@ -34,20 +34,30 @@
                         MemberDataModel.formUserGroup.controls['lastNameControl']?.touched" style="color: red;"> Please enter a valid last name.</span>                                                      
                         </div> 
 
+                        <div class="form-outline mb-3">
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">DOB</i> </span>
                             </div>
-                            <input class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="MemberDataModel.dateOfBirth" placeholder="Enter Date Of Birth" type="date">
+                            <input class="form-control" formControlName="dobControl"   [(ngModel)]="MemberDataModel.dateOfBirth" placeholder="Enter Date Of Birth" type="date">
                         </div>
+                        <span class="validspan" *ngIf="!MemberDataModel.formUserGroup.controls['dobControl'].valid && 
+                        MemberDataModel.formUserGroup.controls['dobControl']?.touched" style="color: red;"> Please enter a date of birth.</span>                                                      
+                       
+                    </div>
+                    <div class="form-outline mb-3">
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">Address</i> </span>
                             </div>
-                            <input class="form-control" [ngModelOptions]="{standalone: true}"  [(ngModel)]="MemberDataModel.address" placeholder="Enter Address" type="text-area">
+                            <input class="form-control" formControlName="addressControl"   [(ngModel)]="MemberDataModel.address" placeholder="Enter Address" type="text-area">
                             <br>
                             <br>
                         </div> 
+                        <span class="validspan" *ngIf="!MemberDataModel.formUserGroup.controls['addressControl'].valid && 
+                        MemberDataModel.formUserGroup.controls['addressControl']?.touched" style="color: red;"> Please enter a address.</span>                                                      
+                       
+                    </div>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i style="width: 70px;">State</i> </span>
